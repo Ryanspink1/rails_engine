@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :customer do
-    first_name "MyString"
-    last_name "MyString"
+    first_name "Sean"
+    last_name "Connery"
   end
 end
