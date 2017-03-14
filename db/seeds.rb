@@ -36,8 +36,8 @@ CSV.foreach("./db/data/transactions.csv", headers: true, header_converters: :sym
   Transaction.create!(invoice: Invoice.find(row[:invoice_id]),
                       credit_card_number: row[:credit_card_number],
                       result: row[:result],
-                      created_at: row[:transaction_created],
-                      updated_at: row[:transaction_updated],
+                      created_at: row[:created_at],
+                      updated_at: row[:updated_at],
                       )
 end
 puts "Transactions Seeded!"
