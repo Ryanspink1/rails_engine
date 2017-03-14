@@ -1,27 +1,34 @@
 require 'rails_helper'
 
 describe "find_all uri" do
-  it "returns relevant items" do
-    create(:merchant)
-    create(:item)
-    create(:item, name: )
+  it "returns item from name" do
+    create_list(:merchant, 4)
+    create_list(:item, 4)
 
-    get '/api/v1/items/find?id=1'
-
+    get "/api/v1/items/find_all?name=MoonBoot3"
     expect(response).to be_success
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)[0]
 
     expect(item).to have_key "name"
     expect(item).to have_key "description"
     expect(item).to have_key "unit_price"
     expect(item).to have_key "merchant_id"
 
-    expect(item["name"]).to eq("Moon Boot")
-    expect(item["description"]).to eq("Worn by Napoleon Dynamite")
-    expect(item["unit_price"]).to eq(1)
-    expect(item["unit_price"]).to_not eq(2)
-    expect(item["merchant_id"]).to eq(2)
-    expect(item["merchant_id"]).to_not eq(4)
+    expect(item["name"]).to eq("MoonBoot3")
+    expect(item["name"]).to_not eq("Moon Boot4")
+  end
+
+  it "returns items from creation date" do
+    create_list(:merchant, 4)
+    create_list(:item, 4, created_at: "2012-03-27T14:54:05.000Z")
+
+    get "/api/v1/items/find_all?created_at=2012-03-27T14:54:05.000Z"
+    expect(response).to be_success
+
+    items = JSON.parse(response.body)
+
+    expect(items.count).to eq(4)
+
   end
 end
