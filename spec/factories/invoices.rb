@@ -1,7 +1,13 @@
 FactoryGirl.define do
   factory :invoice do
-    customer
-    merchant
+    sequence :customer_id do |n|
+      n
+    end
+
+    sequence :merchant_id do |n|
+      n
+    end
+
     status "shipped"
   end
 end
