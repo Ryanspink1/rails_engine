@@ -16,6 +16,21 @@ describe "merchant single finder" do
     expect(merchant).to have_key "name"
   end
 
+  it "will return the single item that matches the search name in caps" do
+    create(:merchant, name: "Casey")
+    create_list(:merchant, 15)
+
+    get "/api/v1/merchants/find?name=CASEY"
+
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchant["name"]).to eq("Casey")
+    expect(merchant).to have_key "id"
+    expect(merchant).to have_key "name"
+  end
+
   it "will return the single item that matches the search id" do
     id = create(:merchant).id
     create_list(:merchant, 15)
@@ -72,7 +87,7 @@ describe "merchant multi-finder" do
     expect(merchants.count).to eq(7)
   end
 
-  it "returns all matches for the given name query" do
+  it "returns all matches for the given created_at time query" do
     create_list(:merchant, 7, updated_at: "2012-03-27T14:54:05.000Z")
     create_list(:merchant, 3)
 
