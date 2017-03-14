@@ -28,10 +28,6 @@ describe 'invoice API' do
 
     expect(invoice).to have_key "customer_id"
     expect(invoice).to have_key "merchant_id"
-
-    # expect(invoice["customer_id"]).to eq(invoice.customer_id)
-    # expect(invoice["merchant_id"]).to eq(invoice.merchant_id)
-
     expect(invoice["customer_id"]).to_not eq(3)
     expect(invoice["merchant_id"]).to_not eq(3)
   end
