@@ -15,7 +15,6 @@ describe "items API" do
   end
 
   it "can get one item by its id" do
-    create_list(:merchant, 1)
     id = create(:item).id
 
     get "/api/v1/items/#{id}"
@@ -33,7 +32,6 @@ describe "items API" do
     expect(item["description"]).to eq("Worn by Napoleon Dynamite")
     expect(item["unit_price"]).to eq(1)
     expect(item["unit_price"]).to_not eq(2)
-    expect(item["merchant_id"]).to eq(5)
     expect(item["merchant_id"]).to_not eq(4)
   end
 end

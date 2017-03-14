@@ -5,8 +5,6 @@ FactoryGirl.define do
     unit_price 1
     created_at "2012-03-27 14:53:59"
     updated_at "2012-03-27 14:53:59"
-    sequence :merchant_id do |n|
-      n
-    end
+    merchant 
   end
 end
