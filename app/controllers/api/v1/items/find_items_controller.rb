@@ -1,4 +1,4 @@
-class Api::V1::Items::FinderController < ApplicationController
+class Api::V1::Items::FindItemsController < ApplicationController
 
   def show
     render json: Item.find_by(item_params)
