@@ -9,7 +9,7 @@ describe "item was sold the most on" do
     create(:invoice_item, item_id:2, created_at: "2012-03-27T14:54:05.000Z")
     create(:invoice_item, item_id:2, created_at: "2012-04-27T14:54:05.000Z")
     create(:invoice_item, item_id:2, created_at: "2012-04-27T14:54:05.000Z")
-
+    # byebug
     get '/api/v1/items/2/best_day'
 
     expect(response).to be_success
