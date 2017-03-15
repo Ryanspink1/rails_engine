@@ -7,9 +7,9 @@ class Merchant < ApplicationRecord
   has_many :customers, through: :invoices
 
   def total_revenue(date = nil)
-    self.invoices.joins(:transactions, :invoice_items)
-    .merge(Transaction.successful)
-    .sum("invoice_items.quantity * invoice_items.unit_price")
+    invoices.joins(:transactions, :invoice_items)
+      .merge(Transaction.successful)
+      .sum("invoice_items.quantity * invoice_items.unit_price")
   end
 
   def self.most_revenue(quantity)

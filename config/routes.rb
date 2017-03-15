@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         get "/find", to: "find_merchants#show"
         get "/find_all", to: "find_merchants#index"
         get "/random", to: "random_merchants#show"
-        get "/:id/revenue", to: "merchants_revenue#show"
+        # get "/:id/revenue", to: "merchants_revenue#show"
       end
 
       namespace :items do
@@ -41,7 +41,10 @@ Rails.application.routes.draw do
         get "/random", to: "random_customers#show"
       end
 
-      resources :merchants, only: [:index, :show]
+      resources :merchants, only: [:index, :show] do
+        get '/revenue', to: 'merchants/merchants_revenue#show'
+      end
+
       resources :customers, only: [:index, :show]
       resources :transactions, only: [:index, :show]
       resources :items, only: [:index, :show]
