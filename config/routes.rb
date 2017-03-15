@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
@@ -37,7 +38,6 @@ Rails.application.routes.draw do
         get "/find_all", to: "find_customers#index"
         get "/random", to: "random_customers#show"
       end
-
 
       resources :merchants, only: [:index, :show]
       resources :customers, only: [:index, :show]
