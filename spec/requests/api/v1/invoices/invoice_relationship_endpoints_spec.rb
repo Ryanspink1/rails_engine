@@ -13,7 +13,12 @@ describe "when user visits invoice's transaction endpoint" do
     expect(response).to be_success
     expect(transactions.count).to eq(3)
     expect(transactions.count).to_not eq(6)
+
+    transactions.each do |transaction|
+      expect(transaction["invoice_id"]).to eq(invoice.id)
+    end
   end
+end
 
   describe "when user visits invoice's invoice items endpoint" do
     it "returns invoice item records related to a single invoice" do
@@ -28,6 +33,9 @@ describe "when user visits invoice's transaction endpoint" do
       expect(response).to be_success
       expect(invoice_items.count).to eq(3)
       expect(invoice_items.count).to_not eq(6)
+      invoice_items.each do |invoice_item|
+        expect(invoice_item["invoice_id"]).to eq(invoice.id)
+      end
     end
   end
 
@@ -73,11 +81,10 @@ describe "when user visits invoice's transaction endpoint" do
 
       get "/api/v1/invoices/#{invoice.id}/merchant"
 
-      customer = JSON.parse(response.body)
+      merchant = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(customer["name"]).to eq "Purple Unicorn"
-      expect(customer["id"]).to eq(id)
+      expect(merchant["name"]).to eq "Purple Unicorn"
+      expect(merchant["id"]).to eq(id)
     end
   end
-end
