@@ -7,7 +7,6 @@ describe "customer single finder" do
 
     get "/api/v1/customers/find?first_name=casey"
 
-
     customer = JSON.parse(response.body)
 
     expect(response).to be_success

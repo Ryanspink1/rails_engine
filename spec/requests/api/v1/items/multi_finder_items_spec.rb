@@ -9,7 +9,7 @@ describe "find_all uri" do
     expect(response).to be_success
 
     item = JSON.parse(response.body)[0]
-    # byebug
+
     expect(item).to have_key "name"
     expect(item).to have_key "description"
     expect(item).to have_key "unit_price"

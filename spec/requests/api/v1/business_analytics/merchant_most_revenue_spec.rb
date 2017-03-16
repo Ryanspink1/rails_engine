@@ -23,7 +23,6 @@ describe "merchants/most_revenue?quantity=x endpoint" do
     expect(merchants.first["id"]).to eq(1)
     expect(merchants.first["id"]).to_not eq(2)
     expect(merchants.count).to eq(1)
-
   end
 
   it "returns top x merchants ranked by total revenue" do

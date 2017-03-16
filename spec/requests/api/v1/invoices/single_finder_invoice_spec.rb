@@ -9,9 +9,8 @@ describe "find uri" do
     expect(response).to be_success
 
     invoice = JSON.parse(response.body)
-# byebug
+
     expect(invoice).to have_key "merchant_id"
     expect(invoice).to have_key "customer_id"
-
   end
 end

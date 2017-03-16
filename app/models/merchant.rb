@@ -23,21 +23,22 @@ class Merchant < ApplicationRecord
 
   def self.most_revenue(quantity)
       joins(:invoice_items)
-      .group('id')
-      .order("sum(invoice_items.quantity * invoice_items.unit_price) DESC")
-      .limit(quantity)
+        .group('id')
+        .order("sum(invoice_items.quantity * invoice_items.unit_price) DESC")
+        .limit(quantity)
   end
 
   def self.most_items(quantity)
     joins(invoices: [:invoice_items, :transactions])
-    .merge(Transaction.successful)
-    .group('id')
-    .order("sum(invoice_items.quantity) DESC")
-    .limit(quantity.to_f)
+      .merge(Transaction.successful)
+      .group('id')
+      .order("sum(invoice_items.quantity) DESC")
+      .limit(quantity.to_f)
   end
 
   def favorite_customer
-    customers.joins(:invoices, :transactions)
+    customers
+      .joins(:invoices, :transactions)
       .merge(Transaction.successful)
       .select("customers.id, first_name, last_name, count(invoices.id) AS count_of_invoices")
       .group("customers.id")
@@ -48,6 +49,6 @@ class Merchant < ApplicationRecord
   def self.revenue(date)
     joins(:invoice_items)
       .where(invoices: {created_at: date})
-    .sum("invoice_items.quantity * invoice_items.unit_price")
+      .sum("invoice_items.quantity * invoice_items.unit_price")
   end
 end
