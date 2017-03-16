@@ -38,7 +38,7 @@ describe "invoice_items API" do
     expect(invoice_item).to_not have_key "jabrony"
 
     expect(invoice_item["quantity"]).to eq(1)
-    expect(invoice_item["unit_price"]).to eq(0.01)
+    expect(invoice_item["unit_price"]).to eq("0.01")
 
     expect(invoice_item["quantity"]).to_not eq(2)
     expect(invoice_item["unit_price"]).to_not eq(2)

@@ -5,18 +5,18 @@ describe "find_all uri" do
     create_list(:merchant, 4)
     create_list(:item, 4)
 
-    get "/api/v1/items/find_all?name=MoonBoot3"
+    get "/api/v1/items/find_all?name=MoonBoot"
     expect(response).to be_success
 
     item = JSON.parse(response.body)[0]
-
+    # byebug
     expect(item).to have_key "name"
     expect(item).to have_key "description"
     expect(item).to have_key "unit_price"
     expect(item).to have_key "merchant_id"
 
-    expect(item["name"]).to eq("MoonBoot3")
-    expect(item["name"]).to_not eq("Moon Boot4")
+    expect(item["name"]).to eq("MoonBoot")
+    expect(item["name"]).to_not eq("MoonBoot4")
   end
 
   it "returns items from creation date" do
