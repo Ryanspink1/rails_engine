@@ -1,5 +1,5 @@
 class Api::V1::Items::FindItemsController < ApplicationController
-  before_action :unit_price
+  before_action :format_unit_price
 
   def show
     render json: Item.find_by(item_params)
@@ -15,9 +15,10 @@ private
     params.permit(:id, :description, :name, :unit_price, :merchant_id, :created_at, :updated_at)
   end
 
-  def unit_price
+  def format_unit_price
     if params[:unit_price]
-      params[:unit_price] = params[:unit_price].to_f * 100
+      unit_price = params[:unit_price].split(".").join
+      params[:unit_price] = unit_price
     end
   end
 
