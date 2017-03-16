@@ -4,7 +4,6 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
-
   def best_day
     invoices.joins(:transactions, :invoice_items)
       .merge(Transaction
@@ -13,4 +12,11 @@ class Item < ApplicationRecord
       .order("sum(invoice_items.quantity)DESC")
       .first.created_at
   end
+
+  def self.most_items(quantity)
+   joins(:invoice_items)
+     .group('id')
+     .order("sum(invoice_items.quantity) DESC")
+     .limit(quantity)
+ end
 end

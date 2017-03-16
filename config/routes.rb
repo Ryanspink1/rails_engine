@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         get '/find', to: "find_items#show"
         get '/find_all', to: "find_items#index"
         get "/random", to: "random_items#show"
+        get "/most_items", to: "most_items#index"
       end
 
       namespace :invoices do

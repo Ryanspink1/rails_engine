@@ -24,10 +24,6 @@ describe "when you visit a merchants most items page" do
     expect(response).to be_success
     expect(most_items.count).to eq(3)
 
-    expect(most_items[0]["id"]).to  eq merchant_1.id
-    expect(most_items[1]["id"]).to eq merchant_2.id
-    expect(most_items[2]["id"]).to eq merchant_3.id
-
     expected_names = most_items.any? do |merchant|
       merchant["name"] == "Casey" || "Alex" || "Ryan"
       merchant["name"] != "Other Merchant"
