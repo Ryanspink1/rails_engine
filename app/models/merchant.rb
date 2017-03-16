@@ -21,18 +21,19 @@ class Merchant < ApplicationRecord
       .sum("invoice_items.quantity * invoice_items.unit_price")
   end
 
-  # def self.most_revenue(quantity)
-  #   joins(:transactions, :invoice_items)
-  #     .merge(Transaction.successful)
-  #     .group('id')
-  #     .order("sum(quantity * unit_price)DESC")
-  #     .limit(quantity)
-  # end
   def self.most_revenue(quantity)
       joins(:invoice_items)
       .group('id')
       .order("sum(invoice_items.quantity * invoice_items.unit_price) DESC")
       .limit(quantity)
+  end
+
+  def self.most_items(quantity)
+    joins(invoices: [:invoice_items, :transactions])
+    .merge(Transaction.successful)
+    .group('id')
+    .order("sum(invoice_items.quantity) DESC")
+    .limit(quantity.to_f)
   end
 
   def favorite_customer
@@ -44,11 +45,9 @@ class Merchant < ApplicationRecord
       .first
   end
 
-  def self.most_items(quantity)
-    joins(invoices: [:invoice_items, :transactions]).merge(Transaction.successful).group('id').order("sum(invoice_items.quantity) DESC").limit(8)
-  end
-
   def self.revenue(date)
-    joins(:invoice_items).where(invoices: {created_at: date}).sum("invoice_items.quantity * invoice_items.unit_price")
+    joins(:invoice_items)
+      .where(invoices: {created_at: date})
+    .sum("invoice_items.quantity * invoice_items.unit_price")
   end
 end
