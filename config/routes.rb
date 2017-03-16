@@ -49,11 +49,12 @@ Rails.application.routes.draw do
         get '/invoices', to: 'customers/customer_invoice_list#index'
         get '/transactions', to: 'customers/customer_transaction_list#index'
       end
+
       resources :transactions, only: [:index, :show] do
         get "/invoice", to: "transactions/transaction_invoice#show"
       end
       resources :items, only: [:index, :show] do
-        get "/best_day", to: "best_day_items#show"
+        get "/best_day", to: "items/best_day_items#show"
         get '/invoice_items', to: 'items/items_invoice_items#show'
         get '/merchant', to: 'items/items_merchant#show'
       end

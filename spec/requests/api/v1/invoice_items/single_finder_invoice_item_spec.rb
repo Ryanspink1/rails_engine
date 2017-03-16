@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "find uri" do
   it "returns single invoice item" do
-    create(:invoice_item)
+    create(:invoice_item, id:1)
 
     get '/api/v1/invoice_items/find?id=1'
 

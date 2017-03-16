@@ -16,8 +16,8 @@ describe "items API" do
 
   it "can get one item by its id" do
     DatabaseCleaner.clean
-    create_list(:merchant, 1)
-    id = create(:item).id
+    create_list(:merchant, 1, id:65)
+    id = create(:item, merchant_id: 65).id
 
     get "/api/v1/items/#{id}"
 
@@ -30,8 +30,8 @@ describe "items API" do
     expect(item).to have_key "unit_price"
     expect(item).to have_key "merchant_id"
 
-    expect(item["name"]).to eq("MoonBoot13")
-    expect(item["description"]).to eq("Worn by Napoleon Dynamite13")
+    expect(item["name"]).to eq("MoonBoot")
+    expect(item["description"]).to eq("Worn by Napoleon Dynamite")
     expect(item["unit_price"]).to eq("0.01")
     expect(item["unit_price"]).to_not eq(2)
     expect(item["merchant_id"]).to eq(65)

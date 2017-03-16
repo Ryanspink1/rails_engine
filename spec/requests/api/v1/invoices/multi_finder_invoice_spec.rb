@@ -5,9 +5,10 @@ describe "find_all uri" do
     create_list(:invoice, 3)
 
     get "/api/v1/invoices/find_all?status=shipped"
+
     expect(response).to be_success
 
-    invoices = JSON.parse(response.body)[0]
+    invoices = JSON.parse(response.body)
 
     expect(invoices.count).to eq(3)
 
