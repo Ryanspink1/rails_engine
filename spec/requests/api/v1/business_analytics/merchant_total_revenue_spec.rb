@@ -14,7 +14,7 @@ describe "when you visit a merchants revenue page" do
     revenue = JSON.parse(response.body)["revenue"]
 
     expect(response).to be_success
-    expect(revenue).to eq("36.9")
+    expect(revenue).to eq("36.90")
   end
 end
 
@@ -34,9 +34,7 @@ describe "when you search for a single merchant's revenue on a specific date" do
     get "/api/v1/merchants/#{merchant.id}/revenue?date=2012-03-27T14:54:05.000Z"
 
     revenue = JSON.parse(response.body)["revenue"]
-    # total_invoice_revenue = merchant.total_revenue
     expect(response).to be_success
-    expect(revenue).to eq("0.3")
-    # expect(revenue).to_not eq(total_invoice_revenue)
+    expect(revenue).to eq("0.30")
   end
 end
