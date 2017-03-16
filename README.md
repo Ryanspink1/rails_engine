@@ -5,7 +5,7 @@ This is a student project that creates API endpoints from e-commerce datasets.
 # How To:
 Here's what you need to do to access this API locally: 
 
-Step one: s
+App Setup:
 ```
 cd rails_engine/
 bundle install
