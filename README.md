@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a student project that creates API endpoints from e-commerce datasets.
 
-Things you may want to cover:
+# How To:
+Here's what you need to do to access this API locally: 
 
-* Ruby version
+App Setup:
+```
+cd rails_engine/
+bundle install
+```
 
-* System dependencies
+To create and seed the database:
+```
+rake db:create
+rake db:migrate
+rake db:seed
+```
 
-* Configuration
+To run full test suite from terminal: `rspec`
 
-* Database creation
+## Endpoints
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Endpoint Routes](https://github.com/Ryanspink1/rails_engine/blob/master/config/routes.rb)

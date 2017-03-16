@@ -15,5 +15,4 @@ class Customer < ApplicationRecord
     .first
   end
 
-
 end

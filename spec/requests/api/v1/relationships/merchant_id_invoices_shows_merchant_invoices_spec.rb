@@ -17,7 +17,7 @@ describe 'merchant id invoices endpoint' do
     expect(invoices.count).to eq(5)
 
     invoices.each do |invoice|
-      expect(invoices["merchant_id"]).to eq(1)
+      expect(invoice["merchant_id"]).to eq(1)
     end
   end
 end
