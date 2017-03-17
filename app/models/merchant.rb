@@ -60,5 +60,6 @@ class Merchant < ApplicationRecord
         .pluck(:customer_id)
 
     Customer.where(id: customers)
+    # customers.joins(:invoices).merge(Invoice.pending).distinct returns two records
   end
 end
