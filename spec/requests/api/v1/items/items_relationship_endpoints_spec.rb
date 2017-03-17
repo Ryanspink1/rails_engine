@@ -23,16 +23,16 @@ describe "when user visits items invoice items endpoint" do
  end
 
 describe "when user visits items merchant endpoint" do
-     it "it displays the merchant records associated with single item" do
-       id = create(:merchant, name: "Purple Unicorn").id
-       item = create(:item, merchant_id: id)
+  it "it displays the merchant records associated with single item" do
+    id = create(:merchant, name: "Purple Unicorn").id
+    item = create(:item, merchant_id: id)
 
-       get "/api/v1/items/#{item.id}/merchant"
+    get "/api/v1/items/#{item.id}/merchant"
 
-       merchant = JSON.parse(response.body)
+    merchant = JSON.parse(response.body)
 
-       expect(response).to be_success
-       expect(merchant["name"]).to eq "Purple Unicorn"
-       expect(merchant["id"]).to eq(id)
-    end
+    expect(response).to be_success
+    expect(merchant["name"]).to eq "Purple Unicorn"
+    expect(merchant["id"]).to eq(id)
+  end
 end

@@ -14,5 +14,4 @@ class Customer < ApplicationRecord
       .order("count_of_invoices DESC")
       .first
   end
-
 end

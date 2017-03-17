@@ -21,5 +21,4 @@ private
       params[:unit_price] = unit_price
     end
   end
-
 end
