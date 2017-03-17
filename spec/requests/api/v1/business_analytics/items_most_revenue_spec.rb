@@ -49,5 +49,4 @@ require 'rails_helper'
       expect(item.first["id"]).to eq(1)
       expect(item.first["id"]).to_not eq(4)
     end
-
   end

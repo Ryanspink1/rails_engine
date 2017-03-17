@@ -12,6 +12,5 @@ describe "find uri" do
 
     expect(invoice_item).to have_key "item_id"
     expect(invoice_item).to have_key "invoice_id"
-
   end
 end

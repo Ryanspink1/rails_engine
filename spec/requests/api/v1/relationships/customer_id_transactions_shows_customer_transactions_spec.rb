@@ -19,6 +19,5 @@ describe 'customer id transactions endpoint' do
     expect(transactions.first["credit_card_number"]).to_not eq("4136371009523847")
     expect(transactions.last["credit_card_number"]).to eq("4136371009523904")
     expect(transactions.last["credit_card_number"]).to_not eq("4136371009523829")
-
   end
 end

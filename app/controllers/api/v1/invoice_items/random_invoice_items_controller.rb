@@ -3,5 +3,4 @@ class Api::V1::InvoiceItems::RandomInvoiceItemsController < ApplicationControlle
   def show
     render json: InvoiceItem.random
   end
-
 end
