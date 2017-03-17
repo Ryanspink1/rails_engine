@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe "merchants/:id/favorite_customer endpoint" do
   it "returns customer with the most successful transactions for specific merchant" do
-
     create(:merchant, id:1)
     create(:customer, id:1, first_name:"bob")
     create(:customer, id:2, first_name:"hambone")
@@ -22,6 +21,5 @@ describe "merchants/:id/favorite_customer endpoint" do
 
     expect(customer["id"]).to eq(1)
     expect(customer["id"]).to_not eq(2)
-
   end
 end

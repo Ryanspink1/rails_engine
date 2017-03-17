@@ -7,7 +7,6 @@ describe "merchant single finder" do
 
     get "/api/v1/merchants/find?name=casey"
 
-
     merchant = JSON.parse(response.body)
 
     expect(response).to be_success
@@ -22,7 +21,6 @@ describe "merchant single finder" do
 
     get "/api/v1/merchants/find?name=CASEY"
 
-
     merchant = JSON.parse(response.body)
 
     expect(response).to be_success
@@ -36,7 +34,6 @@ describe "merchant single finder" do
     create_list(:merchant, 15)
 
     get "/api/v1/merchants/find?id=#{id}"
-
 
     merchant = JSON.parse(response.body)
 

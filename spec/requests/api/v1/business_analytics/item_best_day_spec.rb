@@ -18,6 +18,5 @@ describe "item was sold the most on" do
 
     expect(best_day["best_day"]).to eq("2012-03-27T14:54:05.000Z")
     expect(best_day["best_day"]).to_not eq("2012-04-27T14:54:05.000Z")
-
   end
 end
