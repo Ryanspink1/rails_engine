@@ -51,4 +51,14 @@ class Merchant < ApplicationRecord
       .where(invoices: {created_at: date})
       .sum("invoice_items.quantity * invoice_items.unit_price")
   end
+
+  def customers_with_pending_invoices
+    customers =
+      invoices.joins(:transactions)
+        .merge(Invoice.pending)
+        .group('invoices.id')
+        .pluck(:customer_id)
+
+    Customer.where(id: customers)
+  end
 end
